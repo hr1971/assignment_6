@@ -11,6 +11,8 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<!-- font awesome cdn -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     *{
           font-family: "Inter", sans-serif;
@@ -137,13 +139,13 @@ generations.</p>
 
       <!-- out impact  -->
 
-      <section class="bg-[#CFF0DC]">
+      <section class="bg-[#CFF0DC] ">
 
-        <div class="max-w-7xl mx-auto ">
+        <div class="max-w-7xl mx-auto p-10">
 
-          <h1 class="text-2xl font-bold text-center p-10">Our Impact</h1>
+          <h1 class="text-2xl font-bold text-center mb-5">Our Impact</h1>
         
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mb-8">
           
           <div class=" max-w-7xl mx-auto rounded-xl  bg-white p-5 w-60 text-center hover:bg-green-100"> 
             <span class="text-green-400 text-xl font-semibold">500K+</span> <br>
@@ -165,6 +167,34 @@ generations.</p>
 
 
     </main>
+
+    <!-- plant a tree today -->
+
+<footer class="bg-[#166534] h-96 flex flex-col justify-center p-6">
+  <div class="flex flex-col gap-4 w-full max-w-md mx-auto">
+    <input placeholder="Your Name" class="input w-full   rounded" />
+    <input placeholder="Email Address" class="input w-full  rounded" />
+
+    <div class="relative w-full">
+  <select class="appearance-none w-full  rounded border border-gray-300 bg-white px-2 py-2 focus:outline-none focus:ring-2 focus:ring-green-600">
+    <option value="">Select Number of Trees</option>
+    <option value="1">1 Tree</option>
+    <option value="5">5 Trees</option>
+    <option value="10">10 Trees</option>
+    <option value="50">50 Trees</option>
+    <option value="100">100 Trees</option>
+  </select>
+  <span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+    <i class="fa-regular fa-square-caret-down"></i>
+  </span>
+</div>
+
+
+    <button class="bg-yellow-500 text-[#166534] font-semibold px-4 py-2 rounded-xl shadow hover:bg-gray-100 transition">Donate Now</button>
+  </div>
+</footer>
+
+
     
 
 
