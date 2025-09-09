@@ -108,7 +108,10 @@ generations.</p>
         <div id="cart-container">
 
         </div>
-        <div id="cart-count" class="flex justify-between "></div>
+        <div id="cart-count" class="flex justify-between ">
+          <span>Total:</span>
+          <span id="cart-total-price">৳0</span>
+        </div>
       </div>
       </section>
 
@@ -173,6 +176,43 @@ generations.</p>
 
 
     </main>
+
+    <!-- modal -->
+
+
+    <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="plantModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="details-container">
+     
+    
+   </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+<!-- add to cart modal -->
+
+<!-- You can open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+<dialog id="addCartModal" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+  <div id="addCart-container">
+
+  </div>
+  </div>
+</dialog>
+
 
     <!-- plant a tree today -->
 

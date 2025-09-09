@@ -7,6 +7,11 @@ const cartContainer = document.getElementById('cart-container')
 
 const cartCount = document.getElementById('cart-count')
 
+const cartTotalPrice = document.getElementById('cart-total-price');
+
+
+
+
 let yourCart = []
 
 const loadCategory = () => {
@@ -54,6 +59,33 @@ category.forEach(cate => {
 
  }
 
+//  load plant details
+
+const loadPlantDetails = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`
+    const res = await fetch(url);
+    const details = await res.json();
+    displayPlantDetails(details.plants)
+};
+const displayPlantDetails = (plant) => {
+console.log(plant)
+const detailsBox = document.getElementById('details-container');
+detailsBox.innerHTML = `
+  <div >
+      <h1 class="text-xl font-bold text-gray-800 mb-2">${plant.name}</h1>
+
+    <img class="w-full h-60 object-cover rounded-xl mb-2" src="${plant.image}" alt="">
+
+    <p class="font-semibold mb-2"><span class="text-xl font-semibold">Category</span> : ${plant.category} </p>
+
+    <p class="font-semibold mb-2"><span class="text-xl font-semibold">Price</span> : ${plant.price} </p>
+
+    <p class="text-sm  mt-1 mb-2"><span class="text-xl font-semibold">Description</span>-${plant.description} </p>
+     </div>
+`;
+document.getElementById('plantModal').showModal();
+}
+
  const showPlantByCategory = (plants) => {
     // console.log(plants)
     plantContainer.innerHTML ="";
@@ -68,7 +100,8 @@ category.forEach(cate => {
         </div>
         
         <div id="${plant.id}" class="p-4">
-            <h2 id="${plant.id}" class="text-xl font-bold text-gray-800">
+
+            <h2 onclick="loadPlantDetails(${plant.id})"  id="${plant.id}" class="text-xl font-bold text-gray-800">
               ${plant.name}
             </h2>
             <p class="text-sm text-gray-600 mt-1">
@@ -84,7 +117,7 @@ category.forEach(cate => {
                 </span>
             </div>
             
-            <button class="mt-4 w-full px-4 py-2 text-white font-semibold bg-green-600 hover:bg-green-700 transition duration-300 ease-in-out rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+            <button onclick="loadCartModal(${plant.id})" class="mt-4 w-full px-4 py-2 text-white font-semibold bg-green-600  ease-in-out rounded-xl shadow-md ">
                 Add to Cart
             </button>
         </div>
@@ -92,6 +125,34 @@ category.forEach(cate => {
     `
    })
  }
+
+//  add cart modal
+
+
+const loadCartModal = async (id) => {
+const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+const res = await fetch(url);
+const details = await res.json();
+displayAddCartDetails(details.plants); // API returns `plants` object
+};
+
+
+const displayAddCartDetails = (plant) => {
+if (!plant) {
+console.error("No plant data received for cart modal");
+return;
+}
+
+
+const detailsBox = document.getElementById('addCart-container');
+detailsBox.innerHTML = `
+<div>
+<h1 class="text-xl font-bold text-gray-800 mb-2">${plant.name} has been added to Cart</h1>
+<button onclick="document.getElementById('addCartModal').close()" class="mt-2 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+</div>
+`;
+document.getElementById('addCartModal').showModal();
+};
 
  plantContainer.addEventListener('click', (e) =>{
     // console.log(e.target)
@@ -116,7 +177,8 @@ const name = e.target.parentNode.children[0].innerText
         price:price
     })
     showCart(yourCart)
-    // cartCount.innerText = yourCart.price
+
+       
  }
 
  const showCart = (yourCart) => {
