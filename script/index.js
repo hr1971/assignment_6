@@ -14,6 +14,17 @@ const cartTotalPrice = document.getElementById('cart-total-price');
 
 let yourCart = []
 
+
+const manageSpinner = (status) => {
+    if (status == true) {
+        document.getElementById('spinner').classList.remove("hidden");
+        document.getElementById('plant-container').classList.add("hidden");
+    }else{
+         document.getElementById('plant-container').classList.remove("hidden");
+        document.getElementById('spinner').classList.add("hidden");
+    }
+}
+
 const loadCategory = () => {
     fetch('https://openapi.programming-hero.com/api/categories')
 .then((res) => res.json())
@@ -51,6 +62,7 @@ category.forEach(cate => {
 
 
  const loadPlantCategory = (id) => {
+    manageSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -124,6 +136,7 @@ document.getElementById('plantModal').showModal();
     </div>
     `
    })
+   manageSpinner(false);
  }
 
 //  add cart modal
